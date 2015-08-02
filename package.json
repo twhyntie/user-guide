@@ -2,8 +2,17 @@
   "name": "user-guide",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "grunt": "~0.4.1",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-sass": "~0.18.0",
+    "grunt-string-replace": "~0.2.7",
+    "node-sass": "~2.0.1"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -12,6 +21,14 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "time-grunt": "^1.1.0"
+  },
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "grunt build",
+    "grunt": "grunt",
+    "watch": "grunt watch",
+    "postinstall": "bower install && grunt build"
   }
 }

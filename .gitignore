@@ -1,2 +1,22 @@
 # Node
 node_modules
+
+# Bower
+bower_components
+
+# Font Awesome
+# Added automatically?
+assets/fontawesome
+
+
+# Temporary stuff
+tmp.txt
+
+# JavaScript - do we want to ignore this?
+js
+
+# CSS
+#
+# These are generated.
+public/stylesheets/foundation.css
+public/stylesheets/foundation.css.map
