@@ -59,15 +59,6 @@ module.exports = function(grunt) {
         },
       },
 
-    uglify: {
-      dist: {
-        files: {
-          // Shrink the file size by removing spaces
-          'js/foundation.js': ['js/foundation.js']
-        }
-      }
-    },
-
     watch: {
       grunt: { files: ['Gruntfile.js'] },
 
@@ -103,6 +94,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('build', ['copy', 'string-replace:fontawesome', 'sass', 'uglify']);
+  grunt.registerTask('build', ['copy', 'string-replace:fontawesome', 'sass']);
   grunt.registerTask('default', ['watch']);
 };

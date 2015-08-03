@@ -27,14 +27,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Global locals.
 app.locals.projectName = app.config.projectName;
-console.log(app.locals.projectName);
 app.locals.copyrightYear = new Date().getFullYear();
 app.locals.copyrightName = app.config.companyName;
-console.log(app.locals.copyrightName);
 app.locals.cacheBreaker = 'br34k-01';
 
-app.use('/', routes);
-app.use('/users', users);
+// Setup the routes.
+require('./routes')(app);
+
+//app.use('/', routes);
+//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
