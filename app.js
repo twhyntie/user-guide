@@ -1,3 +1,4 @@
+var config = require('./config');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -10,6 +11,8 @@ var users = require('./routes/users');
 
 var app = express();
 
+app.config = config;
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -21,6 +24,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Global locals.
+app.locals.projectName = app.config.projectName;
+console.log(app.locals.projectName);
+app.locals.copyrightYear = new Date().getFullYear();
+app.locals.copyrightName = app.config.companyName;
+console.log(app.locals.copyrightName);
+app.locals.cacheBreaker = 'br34k-01';
 
 app.use('/', routes);
 app.use('/users', users);

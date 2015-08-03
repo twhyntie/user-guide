@@ -1,7 +1,68 @@
 doctype html
-html
+html(lan='en')
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/foundation.css')
+    title #{title}
+    meta(charset='UTF-8')
+    link(rel='stylesheet', href='/stylesheets/foundation.css?#{cacheBreaker}')
+    script(src='/vendor/foundation/js/vendor/modernizr.js?#{cacheBreaker}')
   body
-    block content
+    div.off-canvas-wrap(data-offcanvas='')
+      div.inner-wrap
+        nav.tab-bar.show-for-small
+          section.left-small
+            a.left-off-canvas-toggle.menu-icon(href="#")
+              span
+          section.middle.tab-bar-section
+            h1.title #{projectName}
+        aside.left-off-canvas-menu
+          ul.off-canvas-list
+            //-li: label Account
+            //-  if user && user.username
+            //-    li: a(href='#{user.defaultReturnUrl}')
+            //-      i.fi-torso
+            //-      |  #{user.username}
+            //-  else
+            //-    li: a(href='/login/')
+            //-      i.fi-torso
+            //-      | &nbsp;
+            //-      | Sign In
+            //-    li: a(href='/signup/')
+            //-      i.fi-torso
+            //-      | &nbsp;
+            //-      | Sign Up
+            li: label #{projectName}
+            li: a(href='/') Home
+            li: a(href='/about/') About
+            //-li: a(href='/contact/') Contact
+        nav.top-bar.show-for-medium-up(data-topbar, role='navigation')
+          ul.title-area
+            li.name
+              h1: a(href='/') #{projectName}
+            section.top-bar-section
+              ul.left
+                li: a(href='/') Home
+                li: a(href='/about/') About
+              //-  li: a(href='/signup/') Sign Up
+              //-  li: a(href='/contact/') Contact
+              //-ul.right
+              //-  if user && user.username
+              //-    li: a(href='#{user.defaultReturnUrl}')
+              //-      i.fi-torso
+              //-      |  #{user.username}
+              //-  else
+              //-    li: a(href='/login/')
+              //-      i.fi-torso
+              //-      | &nbsp;
+              //-      | Sign In
+        section.main-section
+          block body
+          hr
+          h6.subheader.text-center &#169; #{copyrightYear} #{copyrightName}
+    script(src='/vendor/foundation/js/vendor/jquery.js?#{cacheBreaker}')
+    script(src='/vendor/foundation/js/vendor/jquery.cookie.js?#{cacheBreaker}')
+    script(src='/vendor/foundation/js/vendor/fastclick.js?#{cacheBreaker}')
+    script(src='/vendor/foundation/js/foundation.min.js?#{cacheBreaker}')
+    script
+    script.
+      $(document).foundation();
+    //-block feet

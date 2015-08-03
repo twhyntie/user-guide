@@ -26,10 +26,10 @@ module.exports = function(grunt) {
     copy: {
       scripts: {
         expand: true,
-        cwd: 'bower_components/foundation/js/vendor/',
+        cwd: 'bower_components/foundation/js/',
         src: '**',
-        flatten: 'true',
-        dest: 'js/vendor/'
+        flatten: false,
+        dest: 'public/vendor/foundation/js/'
       },
 
       iconfonts: {
@@ -56,43 +56,6 @@ module.exports = function(grunt) {
               }
             ]
           }
-        },
-      },
-
-    concat: {
-        options: {
-          separator: ';',
-        },
-        dist: {
-          src: [
-
-          // Foundation core
-          'bower_components/foundation/js/foundation/foundation.js',
-
-          // Pick the componenets you need in your project
-          'bower_components/foundation/js/foundation/foundation.abide.js',
-          'bower_components/foundation/js/foundation/foundation.accordion.js',
-          'bower_components/foundation/js/foundation/foundation.alert.js',
-          'bower_components/foundation/js/foundation/foundation.clearing.js',
-          'bower_components/foundation/js/foundation/foundation.dropdown.js',
-          'bower_components/foundation/js/foundation/foundation.equalizer.js',
-          'bower_components/foundation/js/foundation/foundation.interchange.js',
-          'bower_components/foundation/js/foundation/foundation.joyride.js',
-          'bower_components/foundation/js/foundation/foundation.magellan.js',
-          'bower_components/foundation/js/foundation/foundation.offcanvas.js',
-          'bower_components/foundation/js/foundation/foundation.orbit.js',
-          'bower_components/foundation/js/foundation/foundation.reveal.js',
-          'bower_components/foundation/js/foundation/foundation.slider.js',
-          'bower_components/foundation/js/foundation/foundation.tab.js',
-          'bower_components/foundation/js/foundation/foundation.tooltip.js',
-          'bower_components/foundation/js/foundation/foundation.topbar.js',
-
-          // Include your own custom scripts (located in the custom folder)
-          'js/custom/*.js'
-
-          ],
-          // Finally, concatinate all the files above into one single file
-          dest: 'js/foundation.js',
         },
       },
 
@@ -140,6 +103,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-string-replace');
 
-  grunt.registerTask('build', ['copy', 'string-replace:fontawesome', 'sass', 'concat', 'uglify']);
+  grunt.registerTask('build', ['copy', 'string-replace:fontawesome', 'sass', 'uglify']);
   grunt.registerTask('default', ['watch']);
 };
