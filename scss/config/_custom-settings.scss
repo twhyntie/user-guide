@@ -8,6 +8,9 @@ $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
 $font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif;
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
+// Sets the path for Font Awesome - should be in the public folder.
+$fa-font-path: "../assets/fontawesome/fonts";
+
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
@@ -58,3 +61,8 @@ $medium-breakpoint: em-calc(1024);
 $topbar-breakpoint: em-calc(620);
 $large-breakpoint:  em-calc(1440);
 $xlarge-breakpoint: em-calc(1920);
+
+// Font Awesome sizing. FIXME: Do this more elegantly...
+i.fa-3 {
+  font-size:3em;
+}

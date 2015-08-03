@@ -1,14 +1,36 @@
 var config = require('./config');
+
 var express = require('express');
+
 var path = require('path');
+
 var favicon = require('serve-favicon');
+
 var logger = require('morgan');
+
 var cookieParser = require('cookie-parser');
+
 var bodyParser = require('body-parser');
+
+var session = require('express-session');
+
+var mongoStore = require('connect-mongo')(session);
+
+var mongoose = require('mongoose');
 
 var app = express();
 
 app.config = config;
+
+// Setup mongoose.
+app.db = mongoose.createConnection(config.mongodb.uri);
+app.db.on('error', console.error.bind(console, 'mongoose connection error: '));
+app.db.once('open', function () {
+  //and... we have a data store
+});
+
+// Configure the data models.
+require('./models')(app, mongoose);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,13 +48,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.locals.projectName = app.config.projectName;
 app.locals.copyrightYear = new Date().getFullYear();
 app.locals.copyrightName = app.config.companyName;
-app.locals.cacheBreaker = 'br34k-01';
+app.locals.cacheBreaker = 'br34k-02';
 
-// Setup the routes.
+// Set up the routes.
 require('./routes')(app);
-
-//app.use('/', routes);
-//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -41,7 +60,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
+// Error handlers.
 
 // development error handler
 // will print stacktrace

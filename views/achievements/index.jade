@@ -8,4 +8,17 @@ block body
       p
       p This page lists the possible achievements in this edition
         | of #{projectName}.
-      p.text-center COMING SOON!
+
+      table
+        thead
+          tr
+            th Badge
+            th Achievement
+        tbody
+          - for achievement in achievements 
+            tr
+              td.text-center
+                .panel: i(class="fa #{achievement.icon} fa-3")
+              td
+                h5 #{achievement.longname}
+                p #{achievement.description}
