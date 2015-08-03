@@ -4,6 +4,9 @@ node_modules
 # Bower
 bower_components
 
+# Local environment variables.
+.env
+
 # Font Awesome
 # Added automatically?
 assets/fontawesome
